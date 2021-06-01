@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		962CEB0B264CC2E20012AD7A /* foo.html in Resources */ = {isa = PBXBuildFile; fileRef = 96985A192646118300268A68 /* foo.html */; };
-		962CEB0D264CC2EC0012AD7A /* remapped_turtle.bag in Resources */ = {isa = PBXBuildFile; fileRef = 962CEB0C264CC2EC0012AD7A /* remapped_turtle.bag */; };
-		962CEB0E264CC4A70012AD7A /* remapped_turtle.bag in Resources */ = {isa = PBXBuildFile; fileRef = 962CEB0C264CC2EC0012AD7A /* remapped_turtle.bag */; };
-		968B43F3264CBC7B005F7296 /* Vapor in Frameworks */ = {isa = PBXBuildFile; productRef = 968B43F2264CBC7B005F7296 /* Vapor */; };
+		9661B3452664AA7800200446 /* ScriptMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661B3442664AA7800200446 /* ScriptMessage.swift */; };
+		966D68C22664BDE000522475 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 966D68C12664BDE000522475 /* Logging */; };
 		969859F52645FFF700268A68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969859F42645FFF700268A68 /* AppDelegate.swift */; };
 		969859F72645FFF900268A68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 969859F62645FFF900268A68 /* Assets.xcassets */; };
 		969859FA2645FFF900268A68 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 969859F82645FFF900268A68 /* MainMenu.xib */; };
@@ -19,14 +18,10 @@
 		96985A0F2646001E00268A68 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96985A0D2646001E00268A68 /* PreviewViewController.xib */; };
 		96985A142646001E00268A68 /* PreviewExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 96985A062646001E00268A68 /* PreviewExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96985A1A2646118300268A68 /* foo.html in Resources */ = {isa = PBXBuildFile; fileRef = 96985A192646118300268A68 /* foo.html */; };
-		96985A2026479EF600268A68 /* NIOHTTP1 in Frameworks */ = {isa = PBXBuildFile; productRef = 96985A1F26479EF600268A68 /* NIOHTTP1 */; };
-		96985A2226479EF600268A68 /* NIO in Frameworks */ = {isa = PBXBuildFile; productRef = 96985A2126479EF600268A68 /* NIO */; };
-		96985A242647A5B600268A68 /* NIO in Frameworks */ = {isa = PBXBuildFile; productRef = 96985A232647A5B600268A68 /* NIO */; };
-		96985A262647A5B800268A68 /* NIOHTTP1 in Frameworks */ = {isa = PBXBuildFile; productRef = 96985A252647A5B800268A68 /* NIOHTTP1 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		96985A122646001E00268A68 /* PBXContainerItemProxy */ = {
+		966D68BB2664BD4700522475 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 969859E92645FFF700268A68 /* Project object */;
 			proxyType = 1;
@@ -50,7 +45,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		962CEB0C264CC2EC0012AD7A /* remapped_turtle.bag */ = {isa = PBXFileReference; lastKnownFileType = file; name = remapped_turtle.bag; path = PreviewExtension/remapped_turtle.bag; sourceTree = SOURCE_ROOT; };
+		9661B3442664AA7800200446 /* ScriptMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptMessage.swift; sourceTree = "<group>"; };
 		969859F12645FFF700268A68 /* QLTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QLTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		969859F42645FFF700268A68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		969859F62645FFF900268A68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,9 +66,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				968B43F3264CBC7B005F7296 /* Vapor in Frameworks */,
-				96985A242647A5B600268A68 /* NIO in Frameworks */,
-				96985A262647A5B800268A68 /* NIOHTTP1 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,9 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96985A2226479EF600268A68 /* NIO in Frameworks */,
+				966D68C22664BDE000522475 /* Logging in Frameworks */,
 				96985A092646001E00268A68 /* Quartz.framework in Frameworks */,
-				96985A2026479EF600268A68 /* NIOHTTP1 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +89,9 @@
 				96985A072646001E00268A68 /* Frameworks */,
 				969859F22645FFF700268A68 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		969859F22645FFF700268A68 /* Products */ = {
 			isa = PBXGroup;
@@ -117,7 +110,6 @@
 				969859F82645FFF900268A68 /* MainMenu.xib */,
 				969859FB2645FFF900268A68 /* Info.plist */,
 				969859FC2645FFF900268A68 /* QLTest.entitlements */,
-				962CEB0C264CC2EC0012AD7A /* remapped_turtle.bag */,
 			);
 			path = QLTest;
 			sourceTree = "<group>";
@@ -133,6 +125,7 @@
 		96985A0A2646001E00268A68 /* PreviewExtension */ = {
 			isa = PBXGroup;
 			children = (
+				9661B3442664AA7800200446 /* ScriptMessage.swift */,
 				96985A0B2646001E00268A68 /* PreviewViewController.swift */,
 				96985A0D2646001E00268A68 /* PreviewViewController.xib */,
 				96985A102646001E00268A68 /* Info.plist */,
@@ -159,13 +152,10 @@
 			dependencies = (
 				96985A2A2647A7E800268A68 /* PBXTargetDependency */,
 				96985A282647A7E400268A68 /* PBXTargetDependency */,
-				96985A132646001E00268A68 /* PBXTargetDependency */,
+				966D68BC2664BD4700522475 /* PBXTargetDependency */,
 			);
 			name = QLTest;
 			packageProductDependencies = (
-				96985A232647A5B600268A68 /* NIO */,
-				96985A252647A5B800268A68 /* NIOHTTP1 */,
-				968B43F2264CBC7B005F7296 /* Vapor */,
 			);
 			productName = QLTest;
 			productReference = 969859F12645FFF700268A68 /* QLTest.app */;
@@ -182,11 +172,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				966D68C42664BDE400522475 /* PBXTargetDependency */,
 			);
 			name = PreviewExtension;
 			packageProductDependencies = (
-				96985A1F26479EF600268A68 /* NIOHTTP1 */,
-				96985A2126479EF600268A68 /* NIO */,
+				966D68C12664BDE000522475 /* Logging */,
 			);
 			productName = PreviewExtension;
 			productReference = 96985A062646001E00268A68 /* PreviewExtension.appex */;
@@ -219,8 +209,7 @@
 			);
 			mainGroup = 969859E82645FFF700268A68;
 			packageReferences = (
-				96985A1E26479EF600268A68 /* XCRemoteSwiftPackageReference "swift-nio" */,
-				968B43F1264CBC7B005F7296 /* XCRemoteSwiftPackageReference "vapor" */,
+				966D68C02664BDDF00522475 /* XCRemoteSwiftPackageReference "swift-log" */,
 			);
 			productRefGroup = 969859F22645FFF700268A68 /* Products */;
 			projectDirPath = "";
@@ -237,7 +226,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				962CEB0D264CC2EC0012AD7A /* remapped_turtle.bag in Resources */,
 				969859F72645FFF900268A68 /* Assets.xcassets in Resources */,
 				969859FA2645FFF900268A68 /* MainMenu.xib in Resources */,
 				962CEB0B264CC2E20012AD7A /* foo.html in Resources */,
@@ -250,7 +238,6 @@
 			files = (
 				96985A0F2646001E00268A68 /* PreviewViewController.xib in Resources */,
 				96985A1A2646118300268A68 /* foo.html in Resources */,
-				962CEB0E264CC4A70012AD7A /* remapped_turtle.bag in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9661B3452664AA7800200446 /* ScriptMessage.swift in Sources */,
 				96985A0C2646001E00268A68 /* PreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,10 +264,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		96985A132646001E00268A68 /* PBXTargetDependency */ = {
+		966D68BC2664BD4700522475 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 96985A052646001E00268A68 /* PreviewExtension */;
-			targetProxy = 96985A122646001E00268A68 /* PBXContainerItemProxy */;
+			targetProxy = 966D68BB2664BD4700522475 /* PBXContainerItemProxy */;
+		};
+		966D68C42664BDE400522475 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 966D68C32664BDE400522475 /* Logging */;
 		};
 		96985A282647A7E400268A68 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -535,12 +527,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		968B43F1264CBC7B005F7296 /* XCRemoteSwiftPackageReference "vapor" */ = {
+		966D68C02664BDDF00522475 /* XCRemoteSwiftPackageReference "swift-log" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/vapor/vapor";
+			repositoryURL = "https://github.com/apple/swift-log";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.45.2;
+				minimumVersion = 1.4.2;
 			};
 		};
 		96985A1E26479EF600268A68 /* XCRemoteSwiftPackageReference "swift-nio" */ = {
@@ -554,30 +546,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		968B43F2264CBC7B005F7296 /* Vapor */ = {
+		966D68C12664BDE000522475 /* Logging */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 968B43F1264CBC7B005F7296 /* XCRemoteSwiftPackageReference "vapor" */;
-			productName = Vapor;
+			package = 966D68C02664BDDF00522475 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
 		};
-		96985A1F26479EF600268A68 /* NIOHTTP1 */ = {
+		966D68C32664BDE400522475 /* Logging */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 96985A1E26479EF600268A68 /* XCRemoteSwiftPackageReference "swift-nio" */;
-			productName = NIOHTTP1;
-		};
-		96985A2126479EF600268A68 /* NIO */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 96985A1E26479EF600268A68 /* XCRemoteSwiftPackageReference "swift-nio" */;
-			productName = NIO;
-		};
-		96985A232647A5B600268A68 /* NIO */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 96985A1E26479EF600268A68 /* XCRemoteSwiftPackageReference "swift-nio" */;
-			productName = NIO;
-		};
-		96985A252647A5B800268A68 /* NIOHTTP1 */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 96985A1E26479EF600268A68 /* XCRemoteSwiftPackageReference "swift-nio" */;
-			productName = NIOHTTP1;
+			package = 966D68C02664BDDF00522475 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
 		};
 		96985A272647A7E400268A68 /* NIO */ = {
 			isa = XCSwiftPackageProductDependency;

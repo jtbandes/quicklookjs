@@ -9,7 +9,7 @@ import Cocoa
 import Quartz
 //import NIO
 //import NIOHTTP1
-import Vapor
+//import Vapor
 
 //class SimpleHTTPServer: ChannelInboundHandler {
 //    typealias InboundIn = HTTPServerRequestPart
@@ -62,28 +62,28 @@ import Vapor
 //        print("bound to addr \(serverChannel.localAddress)")
 //    }
 //}
-
-class Server {
-    var app: Application!
-    init() {
-        app = try! Application(.detect())
-        
-        app.get("foo.html") { req in
-            req.fileio.streamFile(at: Bundle.main.path(forResource: "foo", ofType: "html")!)
-        }
-        app.get("remapped_turtle.bag") { req in
-            req.fileio.streamFile(at: Bundle.main.path(forResource: "remapped_turtle", ofType: "bag")!)
-        }
-        
-        app.http.server.configuration.port = 11122
-        try! app.start()
-        
-        print("Listening on \(app.http.server.shared.localAddress)")
-    }
-    deinit {
-        app.shutdown()
-    }
-}
+//
+//class Server {
+//    var app: Application!
+//    init() {
+//        app = try! Application(.detect())
+//        
+//        app.get("foo.html") { req in
+//            req.fileio.streamFile(at: Bundle.main.path(forResource: "foo", ofType: "html")!)
+//        }
+//        app.get("remapped_turtle.bag") { req in
+//            req.fileio.streamFile(at: Bundle.main.path(forResource: "remapped_turtle", ofType: "bag")!)
+//        }
+//        
+//        app.http.server.configuration.port = 11122
+//        try! app.start()
+//        
+//        print("Listening on \(app.http.server.shared.localAddress)")
+//    }
+//    deinit {
+//        app.shutdown()
+//    }
+//}
 
 class MyView: NSView {
     
@@ -118,14 +118,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, QLPreviewPanelDataSource, NS
     @IBOutlet var window: NSWindow!
     
     var url: URL?
-    var server: Server?
+//    var server: Server?
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         window.contentView!.registerForDraggedTypes([.fileURL])
         
-        server = Server()
+//        server = Server()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
