@@ -46,7 +46,7 @@
 
 /* Begin PBXFileReference section */
 		9661B3442664AA7800200446 /* ScriptMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptMessage.swift; sourceTree = "<group>"; };
-		969859F12645FFF700268A68 /* QLTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QLTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		969859F12645FFF700268A68 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		969859F42645FFF700268A68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		969859F62645FFF900268A68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		969859F92645FFF900268A68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		969859E82645FFF700268A68 = {
 			isa = PBXGroup;
 			children = (
-				969859F32645FFF700268A68 /* QLTest */,
+				969859F32645FFF700268A68 /* TestApp */,
 				96985A0A2646001E00268A68 /* PreviewExtension */,
 				96985A072646001E00268A68 /* Frameworks */,
 				969859F22645FFF700268A68 /* Products */,
@@ -96,13 +96,13 @@
 		969859F22645FFF700268A68 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				969859F12645FFF700268A68 /* QLTest.app */,
+				969859F12645FFF700268A68 /* TestApp.app */,
 				96985A062646001E00268A68 /* PreviewExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		969859F32645FFF700268A68 /* QLTest */ = {
+		969859F32645FFF700268A68 /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
 				969859F42645FFF700268A68 /* AppDelegate.swift */,
@@ -111,7 +111,7 @@
 				969859FB2645FFF900268A68 /* Info.plist */,
 				969859FC2645FFF900268A68 /* QLTest.entitlements */,
 			);
-			path = QLTest;
+			path = TestApp;
 			sourceTree = "<group>";
 		};
 		96985A072646001E00268A68 /* Frameworks */ = {
@@ -138,9 +138,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		969859F02645FFF700268A68 /* QLTest */ = {
+		969859F02645FFF700268A68 /* TestApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 969859FF2645FFF900268A68 /* Build configuration list for PBXNativeTarget "QLTest" */;
+			buildConfigurationList = 969859FF2645FFF900268A68 /* Build configuration list for PBXNativeTarget "TestApp" */;
 			buildPhases = (
 				969859ED2645FFF700268A68 /* Sources */,
 				969859EE2645FFF700268A68 /* Frameworks */,
@@ -154,11 +154,11 @@
 				96985A282647A7E400268A68 /* PBXTargetDependency */,
 				966D68BC2664BD4700522475 /* PBXTargetDependency */,
 			);
-			name = QLTest;
+			name = TestApp;
 			packageProductDependencies = (
 			);
 			productName = QLTest;
-			productReference = 969859F12645FFF700268A68 /* QLTest.app */;
+			productReference = 969859F12645FFF700268A68 /* TestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		96985A052646001E00268A68 /* PreviewExtension */ = {
@@ -199,7 +199,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 969859EC2645FFF700268A68 /* Build configuration list for PBXProject "QLTest" */;
+			buildConfigurationList = 969859EC2645FFF700268A68 /* Build configuration list for PBXProject "quicklook-js" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -215,7 +215,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				969859F02645FFF700268A68 /* QLTest */,
+				969859F02645FFF700268A68 /* TestApp */,
 				96985A052646001E00268A68 /* PreviewExtension */,
 			);
 		};
@@ -427,12 +427,12 @@
 				CODE_SIGN_ENTITLEMENTS = QLTest/QLTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = QLTest/Info.plist;
+				INFOPLIST_FILE = TestApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.bandes-storch.QLTest";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.bandes-storch.quicklook-js";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -447,12 +447,12 @@
 				CODE_SIGN_ENTITLEMENTS = QLTest/QLTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = QLTest/Info.plist;
+				INFOPLIST_FILE = TestApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.bandes-storch.QLTest";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.bandes-storch.quicklook-js";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -469,7 +469,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.bandes-storch.QLTest.PreviewExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.bandes-storch.quicklook-js.PreviewExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -487,7 +487,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.bandes-storch.QLTest.PreviewExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.bandes-storch.quicklook-js.PreviewExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -497,7 +497,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		969859EC2645FFF700268A68 /* Build configuration list for PBXProject "QLTest" */ = {
+		969859EC2645FFF700268A68 /* Build configuration list for PBXProject "quicklook-js" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				969859FD2645FFF900268A68 /* Debug */,
@@ -506,7 +506,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		969859FF2645FFF900268A68 /* Build configuration list for PBXNativeTarget "QLTest" */ = {
+		969859FF2645FFF900268A68 /* Build configuration list for PBXNativeTarget "TestApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96985A002645FFF900268A68 /* Debug */,
