@@ -13,7 +13,6 @@
 		966D68C22664BDE000522475 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 966D68C12664BDE000522475 /* Logging */; };
 		96985A092646001E00268A68 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96985A082646001E00268A68 /* Quartz.framework */; };
 		96985A0C2646001E00268A68 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96985A0B2646001E00268A68 /* PreviewViewController.swift */; };
-		96985A0F2646001E00268A68 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96985A0D2646001E00268A68 /* PreviewViewController.xib */; };
 		969C924F266754A0005C45DD /* PreviewExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 96985A062646001E00268A68 /* PreviewExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96C352AB266B05F60034F01A /* preview.html in Resources */ = {isa = PBXBuildFile; fileRef = 969C925326675838005C45DD /* preview.html */; };
 		96C352AD266B08190034F01A /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C352AC266B08190034F01A /* Configuration.swift */; };
@@ -53,7 +52,6 @@
 		96985A062646001E00268A68 /* PreviewExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PreviewExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		96985A082646001E00268A68 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		96985A0B2646001E00268A68 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
-		96985A0E2646001E00268A68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreviewViewController.xib; sourceTree = "<group>"; };
 		96985A102646001E00268A68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96985A112646001E00268A68 /* PreviewExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PreviewExtension.entitlements; sourceTree = "<group>"; };
 		969C925326675838005C45DD /* preview.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = preview.html; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 				96C352AC266B08190034F01A /* Configuration.swift */,
 				9661B3442664AA7800200446 /* ScriptMessage.swift */,
 				96985A0B2646001E00268A68 /* PreviewViewController.swift */,
-				96985A0D2646001E00268A68 /* PreviewViewController.xib */,
 				96985A102646001E00268A68 /* Info.plist */,
 				969C925326675838005C45DD /* preview.html */,
 				96985A112646001E00268A68 /* PreviewExtension.entitlements */,
@@ -228,7 +225,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96985A0F2646001E00268A68 /* PreviewViewController.xib in Resources */,
 				96C352AB266B05F60034F01A /* preview.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,17 +264,6 @@
 			targetProxy = 969C9250266754A0005C45DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		96985A0D2646001E00268A68 /* PreviewViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				96985A0E2646001E00268A68 /* Base */,
-			);
-			name = PreviewViewController.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		961BEDA7266750C500AC7012 /* Debug */ = {
