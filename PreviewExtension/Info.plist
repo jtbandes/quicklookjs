@@ -35,7 +35,7 @@
 		<dict>
 			<key>QLSupportedContentTypes</key>
 			<array>
-				<string>org.ros.bag</string>
+				<string>net.bandes-storch.quicklookjs-example</string>
 			</array>
 			<key>QLSupportsSearchableItems</key>
 			<false/>
@@ -44,6 +44,15 @@
 		<string>com.apple.quicklook.preview</string>
 		<key>NSExtensionPrincipalClass</key>
 		<string>$(PRODUCT_MODULE_NAME).PreviewViewController</string>
+	</dict>
+	<key>QLJS</key>
+	<dict>
+		<key>loadingStrategy</key>
+		<string>waitForSignal</string>
+		<key>preferredContentSize</key>
+		<string>{500,300}</string>
+		<key>pagePath</key>
+		<string>preview.html</string>
 	</dict>
 </dict>
 </plist>

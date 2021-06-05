@@ -2,7 +2,7 @@
 <Scheme
    LastUpgradeVersion = "1250"
    wasCreatedForAppExtension = "YES"
-   version = "2.0">
+   version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -29,7 +29,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "969859F02645FFF700268A68"
+               BlueprintIdentifier = "961BED98266750C400AC7012"
                BuildableName = "TestApp.app"
                BlueprintName = "TestApp"
                ReferencedContainer = "container:quicklook-js.xcodeproj">
@@ -50,27 +50,21 @@
       selectedDebuggerIdentifier = ""
       selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
-      askForAppToLaunch = "Yes"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES"
-      launchAutomaticallySubstyle = "2">
-      <RemoteRunnable
-         runnableDebuggingMode = "2"
-         BundleIdentifier = "com.apple.quicklook.QuickLookSimulator"
-         RemotePath = "/System/Library/Frameworks/Quartz.framework/Versions/Current/Frameworks/QuickLookUI.framework/Versions/Current/Resources/Quick Look Simulator.app">
-      </RemoteRunnable>
-      <MacroExpansion>
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "969859F02645FFF700268A68"
+            BlueprintIdentifier = "961BED98266750C400AC7012"
             BuildableName = "TestApp.app"
             BlueprintName = "TestApp"
             ReferencedContainer = "container:quicklook-js.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -84,7 +78,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "969859F02645FFF700268A68"
+            BlueprintIdentifier = "961BED98266750C400AC7012"
             BuildableName = "TestApp.app"
             BlueprintName = "TestApp"
             ReferencedContainer = "container:quicklook-js.xcodeproj">
