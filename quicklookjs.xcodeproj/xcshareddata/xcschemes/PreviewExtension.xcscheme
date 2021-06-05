@@ -18,7 +18,7 @@
                BlueprintIdentifier = "96985A052646001E00268A68"
                BuildableName = "PreviewExtension.appex"
                BlueprintName = "PreviewExtension"
-               ReferencedContainer = "container:quicklook-js.xcodeproj">
+               ReferencedContainer = "container:quicklookjs.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -32,7 +32,7 @@
                BlueprintIdentifier = "961BED98266750C400AC7012"
                BuildableName = "TestApp.app"
                BlueprintName = "TestApp"
-               ReferencedContainer = "container:quicklook-js.xcodeproj">
+               ReferencedContainer = "container:quicklookjs.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -62,7 +62,7 @@
             BlueprintIdentifier = "961BED98266750C400AC7012"
             BuildableName = "TestApp.app"
             BlueprintName = "TestApp"
-            ReferencedContainer = "container:quicklook-js.xcodeproj">
+            ReferencedContainer = "container:quicklookjs.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -81,7 +81,7 @@
             BlueprintIdentifier = "961BED98266750C400AC7012"
             BuildableName = "TestApp.app"
             BlueprintName = "TestApp"
-            ReferencedContainer = "container:quicklook-js.xcodeproj">
+            ReferencedContainer = "container:quicklookjs.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

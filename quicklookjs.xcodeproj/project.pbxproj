@@ -194,7 +194,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 969859EC2645FFF700268A68 /* Build configuration list for PBXProject "quicklook-js" */;
+			buildConfigurationList = 969859EC2645FFF700268A68 /* Build configuration list for PBXProject "quicklookjs" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -486,7 +486,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		969859EC2645FFF700268A68 /* Build configuration list for PBXProject "quicklook-js" */ = {
+		969859EC2645FFF700268A68 /* Build configuration list for PBXProject "quicklookjs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				969859FD2645FFF900268A68 /* Debug */,
