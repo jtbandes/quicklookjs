@@ -15,7 +15,7 @@
   "types": "index.d.ts",
   "scripts": {
     "build": "xcodebuild -disableAutomaticPackageResolution -clonedSourcePackagesDirPath .swiftpm-packages -scheme PreviewExtension SYMROOT=$(pwd)/build -configuration Release clean build",
-    "postbuild": "rm -r dist && mkdir -p dist && cp -R build/Release/PreviewExtension.appex dist/",
+    "postbuild": "rm -rf dist && mkdir -p dist && cp -R build/Release/PreviewExtension.appex dist/ && cp PreviewExtension/PreviewExtension.entitlements dist/",
     "prepack": "npm run build"
   },
   "files": [

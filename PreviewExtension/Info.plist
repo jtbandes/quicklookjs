@@ -49,10 +49,10 @@
 	<dict>
 		<key>loadingStrategy</key>
 		<string>waitForSignal</string>
-		<key>preferredContentSize</key>
-		<string>{500,300}</string>
 		<key>pagePath</key>
 		<string>preview.html</string>
+		<key>preferredContentSize</key>
+		<string>{500,300}</string>
 	</dict>
 </dict>
 </plist>
