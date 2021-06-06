@@ -12,6 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/jtbandes/quicklookjs.git"
   },
+  "types": "index.d.ts",
   "scripts": {
     "build": "xcodebuild -disableAutomaticPackageResolution -clonedSourcePackagesDirPath .swiftpm-packages -scheme PreviewExtension SYMROOT=$(pwd)/build -configuration Release clean build"
   }
