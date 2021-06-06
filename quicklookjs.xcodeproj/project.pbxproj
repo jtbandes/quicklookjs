@@ -10,12 +10,12 @@
 		961BED9C266750C400AC7012 /* TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961BED9B266750C400AC7012 /* TestApp.swift */; };
 		961BED9E266750C400AC7012 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961BED9D266750C400AC7012 /* ContentView.swift */; };
 		9661B3452664AA7800200446 /* ScriptMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661B3442664AA7800200446 /* ScriptMessage.swift */; };
-		966D68C22664BDE000522475 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 966D68C12664BDE000522475 /* Logging */; };
 		96985A092646001E00268A68 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96985A082646001E00268A68 /* Quartz.framework */; };
 		96985A0C2646001E00268A68 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96985A0B2646001E00268A68 /* PreviewViewController.swift */; };
 		969C924F266754A0005C45DD /* PreviewExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 96985A062646001E00268A68 /* PreviewExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96C352AB266B05F60034F01A /* preview.html in Resources */ = {isa = PBXBuildFile; fileRef = 969C925326675838005C45DD /* preview.html */; };
 		96C352AD266B08190034F01A /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C352AC266B08190034F01A /* Configuration.swift */; };
+		96C352B2266B58E60034F01A /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 96C352B1266B58E60034F01A /* Logging */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				966D68C22664BDE000522475 /* Logging in Frameworks */,
+				96C352B2266B58E60034F01A /* Logging in Frameworks */,
 				96985A092646001E00268A68 /* Quartz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,11 +164,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				966D68C42664BDE400522475 /* PBXTargetDependency */,
+				96C352B4266B5E450034F01A /* PBXTargetDependency */,
 			);
 			name = PreviewExtension;
 			packageProductDependencies = (
-				966D68C12664BDE000522475 /* Logging */,
+				96C352B1266B58E60034F01A /* Logging */,
 			);
 			productName = PreviewExtension;
 			productReference = 96985A062646001E00268A68 /* PreviewExtension.appex */;
@@ -201,7 +201,7 @@
 			);
 			mainGroup = 969859E82645FFF700268A68;
 			packageReferences = (
-				966D68C02664BDDF00522475 /* XCRemoteSwiftPackageReference "swift-log" */,
+				96C352B0266B58E60034F01A /* XCRemoteSwiftPackageReference "swift-log" */,
 			);
 			productRefGroup = 969859F22645FFF700268A68 /* Products */;
 			projectDirPath = "";
@@ -254,14 +254,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		966D68C42664BDE400522475 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 966D68C32664BDE400522475 /* Logging */;
-		};
 		969C9251266754A0005C45DD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 96985A052646001E00268A68 /* PreviewExtension */;
 			targetProxy = 969C9250266754A0005C45DD /* PBXContainerItemProxy */;
+		};
+		96C352B4266B5E450034F01A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 96C352B3266B5E450034F01A /* Logging */;
 		};
 /* End PBXTargetDependency section */
 
@@ -359,7 +359,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -414,7 +414,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -492,7 +492,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		966D68C02664BDDF00522475 /* XCRemoteSwiftPackageReference "swift-log" */ = {
+		96C352B0266B58E60034F01A /* XCRemoteSwiftPackageReference "swift-log" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-log";
 			requirement = {
@@ -503,14 +503,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		966D68C12664BDE000522475 /* Logging */ = {
+		96C352B1266B58E60034F01A /* Logging */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 966D68C02664BDDF00522475 /* XCRemoteSwiftPackageReference "swift-log" */;
+			package = 96C352B0266B58E60034F01A /* XCRemoteSwiftPackageReference "swift-log" */;
 			productName = Logging;
 		};
-		966D68C32664BDE400522475 /* Logging */ = {
+		96C352B3266B5E450034F01A /* Logging */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 966D68C02664BDDF00522475 /* XCRemoteSwiftPackageReference "swift-log" */;
+			package = 96C352B0266B58E60034F01A /* XCRemoteSwiftPackageReference "swift-log" */;
 			productName = Logging;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -32,11 +32,11 @@ extension Configuration {
       throw GenericError(message: "File does not exist at “\(pageURL)”")
     }
 
-    guard let loadingStrategy = dict["loadingStrategy"] as? String else {
+    guard let strategyStr = dict["loadingStrategy"] as? String else {
       throw GenericError(message: "Missing loadingStrategy in QLJS configuration")
     }
-    guard let loadingStrategy = Configuration.LoadingStrategy(rawValue: loadingStrategy) else {
-      throw GenericError(message: "Invalid loadingStrategy “\(loadingStrategy)” in QLJS configuration")
+    guard let loadingStrategy = Configuration.LoadingStrategy(rawValue: strategyStr) else {
+      throw GenericError(message: "Invalid loadingStrategy “\(strategyStr)” in QLJS configuration")
     }
 
     return Configuration(
