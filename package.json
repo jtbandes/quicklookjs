@@ -1,6 +1,6 @@
 {
   "name": "quicklookjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Quick Look plugin for web-based previews",
   "homepage": "https://github.com/jtbandes/quicklookjs#readme",
   "author": "Jacob Bandes-Storch",
