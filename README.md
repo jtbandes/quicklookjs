@@ -68,9 +68,9 @@ To make your preview page available to macOS, it needs to be bundled inside the 
 
    - Update the `NSExtension.NSExtensionAttributes.QLSupportedContentTypes` with an array of the **file content types you support**. These can match the [system-declared UTIs](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html#//apple_ref/doc/uid/TP40009259-SW1), or if your app declares custom types, these should match the `UTTypeIdentifier` entries in your app's Info.plist. (See [Declaring New Uniform Type Identifiers](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/understanding_utis/understand_utis_declare/understand_utis_declare.html) for more info about custom file types.)
 
-   - Optionally customize the configuration dictionary under the `QLJS` key (more about this [below](#⚙️-configuration)).
+   - Optionally customize the configuration dictionary under the `QLJS` key (more about this [below](#-configuration)).
 
-1. **Copy your preview page into the extension bundle.** By default the extension will load the page at `PreviewExtension.appex/Contents/Resources/preview.html` which is pre-configured for you with an example page. The file name loaded by the extension is [configurable](#⚙️-configuration).
+1. **Copy your preview page into the extension bundle.** By default the extension will load the page at `PreviewExtension.appex/Contents/Resources/preview.html` which is pre-configured for you with an example page. The file name loaded by the extension is [configurable](#-configuration).
 
 1. **Re-codesign the extension.** This step is important because the modifications you made to the bundle render the existing signature invalid, and macOS requires Quick Look extensions to be signed/sandboxed. An [entitlements plist file](https://developer.apple.com/documentation/security/app_sandbox) is included with the quicklookjs package to get you started.
 
@@ -84,7 +84,7 @@ To make your preview page available to macOS, it needs to be bundled inside the 
 
 Now your app has Quick Look support! 🎉
 
-## ⚙️ Configuration
+## 🛠 Configuration
 
 You can customize some of the preview extension's behaviors by editing the `QLJS` dictionary in its Info.plist. The currently supported keys are:
 
