@@ -2,6 +2,8 @@
 
 [![npm version](https://img.shields.io/npm/v/quicklookjs)](https://www.npmjs.com/package/rosbag)
 
+<img align="right" alt="quicklookjs demo" src="https://user-images.githubusercontent.com/14237/121449575-cb86f080-c935-11eb-9a45-b5837d517616.gif">
+
 quicklookjs provides a macOS [Quick Look](https://developer.apple.com/documentation/quicklook) Previewing extension that displays a web page. By packaging this preview extension with your native app, and replacing the web page with your own, you can implement a Quick Look preview experience using HTML/JavaScript (or a web framework of your choice).
 
 ## 📝 Create a preview page
