@@ -1,6 +1,6 @@
 # quicklookjs
 
-[![npm version](https://img.shields.io/npm/v/quicklookjs)](https://www.npmjs.com/package/rosbag)
+[![npm version](https://img.shields.io/npm/v/quicklookjs)](https://www.npmjs.com/package/quicklookjs)
 
 <img align="right" alt="quicklookjs demo" src="https://user-images.githubusercontent.com/14237/121449575-cb86f080-c935-11eb-9a45-b5837d517616.gif">
 
