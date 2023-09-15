@@ -80,6 +80,10 @@ class PreviewViewController: NSViewController, QLPreviewingController, WKUIDeleg
       fatalError("Unable to load QuickLookJS configuration: \(error.localizedDescription)")
     }
 
+    if configuration.drawsBackground == false {
+      webView.setValue(configuration.drawsBackground, forKey:"drawsBackground")
+    }
+
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     if let size = configuration.preferredContentSize {
       preferredContentSize = size
