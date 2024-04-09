@@ -114,7 +114,8 @@ window.quicklook = {
   },
   async getPreviewedFile() {
     await webkit.messageHandlers.quicklook.postMessage({ action: "getPreviewedFile" });
-    return window.quicklookPreviewedFile;
+    const file = await window.quicklookPreviewedFile;
+    return {file: file, path: window.previewedFileURL};
   },
 };
 
@@ -272,6 +273,10 @@ try {
 
   func webView(_ webView: WKWebView, runOpenPanelWith parameters: WKOpenPanelParameters, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void) {
     if let previewedFileURL = previewedFileURL {
+      // Set the previewedFileURL in Javascript to be returned along with file object
+      webView.evaluateJavaScript("""
+window.previewedFileURL="\(previewedFileURL)";
+""")
       log.debug("responding to open panel with previewed file url")
       completionHandler([previewedFileURL])
     } else {

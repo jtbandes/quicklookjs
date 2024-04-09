@@ -21,12 +21,12 @@
     <div id="preview"></div>
     <script>
       async function main() {
-        const file = await quicklook.getPreviewedFile();
+        const {file, path} = await quicklook.getPreviewedFile();
         const contents = await file.text();
 
         document.getElementById(
           "preview"
-        ).innerText = `File contents are: “${contents.trim()}”`;
+        ).innerText = `\n File contents are: “${contents.trim()}” \n Path is: “${path}”`;
 
         await quicklook.finishedLoading();
       }

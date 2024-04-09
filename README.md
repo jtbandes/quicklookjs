@@ -19,7 +19,7 @@ JavaScript in a quicklookjs preview page can use two functions on the global `qu
   async function main() {
     // Step 1: get the file that we're supposed to show a preview for.
     // This is a File object, the same as if the user had dragged & dropped the file into your page.
-    const file = await quicklook.getPreviewedFile();
+    const {file, path} = await quicklook.getPreviewedFile();
 
     // Step 2: ...do anything you'd like in order to create a preview of the file!
 
