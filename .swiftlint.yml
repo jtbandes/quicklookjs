@@ -1,0 +1,15 @@
+strict: true
+
+excluded:
+  - .build
+  - .swiftpm-packages
+
+disabled_rules:
+  - function_body_length
+  - type_body_length
+  - file_length
+  - cyclomatic_complexity
+  - opening_brace # handled by swiftformat
+
+trailing_comma:
+  mandatory_comma: true
