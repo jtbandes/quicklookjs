@@ -31,7 +31,8 @@ enum ScriptMessage: Decodable {
 }
 
 enum InternalScriptMessage: Decodable {
-  /// Used during `ScriptMessage.getPreviewedFile` to signal that the page is ready to accept a fake click event in order to trigger the file input.
+  /// Used during `ScriptMessage.getPreviewedFile` to signal that the page is ready to accept a fake click event in
+  /// order to trigger the file input.
   case clickFileInput
 
   case error(String)
@@ -50,7 +51,7 @@ enum InternalScriptMessage: Decodable {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     switch try container.decode(Actions.self, forKey: .action) {
     case .clickFileInput: self = .clickFileInput
-    case .error: self = .error(try container.decode(String.self, forKey: .message))
+    case .error: self = try .error(container.decode(String.self, forKey: .message))
     }
   }
 }

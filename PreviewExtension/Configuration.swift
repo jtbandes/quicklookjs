@@ -18,7 +18,8 @@ struct Configuration {
 
 extension Configuration {
   static func fromMainBundle() throws -> Configuration {
-    guard let dict = (Bundle.main.localizedInfoDictionary ?? Bundle.main.infoDictionary)?["QLJS"] as? [String: Any] else {
+    guard let dict = (Bundle.main.localizedInfoDictionary ?? Bundle.main.infoDictionary)?["QLJS"] as? [String: Any]
+    else {
       throw GenericError(message: "Could not read QLJS configuration from Info.plist")
     }
 
@@ -44,12 +45,13 @@ extension Configuration {
       throw GenericError(message: "Invalid loadingStrategy “\(strategyStr)” in QLJS configuration")
     }
 
-    let drawsBackground = (dict["drawsBackground"] as? String).flatMap{ Bool($0) }
+    let drawsBackground = (dict["drawsBackground"] as? String).flatMap { Bool($0) }
 
     return Configuration(
       loadingStrategy: loadingStrategy,
       pageURL: pageURL,
       preferredContentSize: preferredContentSize,
-      drawsBackground: drawsBackground)
+      drawsBackground: drawsBackground
+    )
   }
 }
