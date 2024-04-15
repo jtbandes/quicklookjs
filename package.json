@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/jtbandes/quicklookjs.git"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "types": "index.d.ts",
   "scripts": {
     "prepack": "make build"
