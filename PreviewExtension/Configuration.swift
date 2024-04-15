@@ -13,7 +13,7 @@ struct Configuration {
   var loadingStrategy: LoadingStrategy
   var pageURL: URL
   var preferredContentSize: NSSize?
-  var drawsBackground: Bool?
+  var transparentBackground: Bool
 }
 
 extension Configuration {
@@ -45,13 +45,13 @@ extension Configuration {
       throw GenericError(message: "Invalid loadingStrategy “\(strategyStr)” in QLJS configuration")
     }
 
-    let drawsBackground = (dict["drawsBackground"] as? String).flatMap { Bool($0) }
+    let transparentBackground = (dict["transparentBackground"] as? Bool) ?? false
 
     return Configuration(
       loadingStrategy: loadingStrategy,
       pageURL: pageURL,
       preferredContentSize: preferredContentSize,
-      drawsBackground: drawsBackground
+      transparentBackground: transparentBackground
     )
   }
 }
