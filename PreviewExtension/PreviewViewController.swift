@@ -258,7 +258,7 @@ class PreviewViewController: NSViewController, QLPreviewingController, WKUIDeleg
       """, arguments: [:], in: nil, in: .page)
         .map { [previewedFileURL] _ in
           // The async function above does not return anything, but we want to return the file path
-          return previewedFileURL?.path
+          previewedFileURL?.path
         }
         .mapError { error in
           // Expose the actual underlying error message
