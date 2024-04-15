@@ -57,10 +57,24 @@ private func makeMouseEvent(_ type: NSEvent.EventType, at location: NSPoint, in 
   )
 }
 
+class TransparentWebView: WKWebView {
+  func enableTransparentBackground() {
+    setValue(false, forKey: "drawsBackground")
+  }
+
+  // Try to avoid crashing if this drawsBackground hack stops working in a future macOS version
+  override func setValue(_ value: Any?, forUndefinedKey key: String) {
+    if key == "drawsBackground" {
+      return
+    }
+    super.setValue(value, forUndefinedKey: key)
+  }
+}
+
 class PreviewViewController: NSViewController, QLPreviewingController, WKUIDelegate, WKNavigationDelegate,
   WKScriptMessageHandlerWithReply
 {
-  let webView: WKWebView
+  let webView: TransparentWebView
   let configuration: Configuration
 
   var cancellables = Set<AnyCancellable>()
@@ -79,13 +93,17 @@ class PreviewViewController: NSViewController, QLPreviewingController, WKUIDeleg
     assert(promise != nil)
     loadCompletePromise = promise
 
-    webView = WKWebView(frame: .zero)
+    webView = TransparentWebView(frame: .zero)
 
     do {
       configuration = try Configuration.fromMainBundle()
     } catch {
       log.error("Unable to load QuickLookJS configuration: \(error.localizedDescription)")
       fatalError("Unable to load QuickLookJS configuration: \(error.localizedDescription)")
+    }
+
+    if configuration.transparentBackground {
+      webView.enableTransparentBackground()
     }
 
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

@@ -101,6 +101,8 @@ You can customize some of the preview extension's behaviors by editing the `QLJS
 
 - **`preferredContentSize`** (optional): a string specifying the size of the preview window. In the example Info.plist this is `{500,300}`.
 
+- **`transparentBackground`** (optional): a boolean specifying whether the web view should have a transparent background. This relies on undocumented APIs, so use it with caution.
+
 ## 🧠 Behind the scenes
 
 Under the hood, quicklookjs loads your preview page in a [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview), and the `quicklook` functions are provided in a user script.
