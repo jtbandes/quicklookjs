@@ -18,10 +18,12 @@ JavaScript in a quicklookjs preview page can use two functions on the global `qu
   // This isn't required; you can always use .then() instead of await.
   async function main() {
     // Step 1: get the file that we're supposed to show a preview for.
-    // This is a File object, the same as if the user had dragged & dropped the file into your page.
-    const {file, path} = await quicklook.getPreviewedFile();
+    // `file` is a File object, the same as if the user had dragged & dropped the file into your page.
+    const { file, path } = await quicklook.getPreviewedFile();
 
     // Step 2: ...do anything you'd like in order to create a preview of the file!
+    // File inherits from Blob (https://developer.mozilla.org/en-US/docs/Web/API/Blob), so you can
+    // use Blob APIs like `text()` or `arrayBuffer()` to read the file.
 
     // Step 3: tell quicklookjs that we're ready to display the preview.
     await quicklook.finishedLoading();
