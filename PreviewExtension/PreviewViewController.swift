@@ -99,6 +99,7 @@ class PreviewViewController: NSViewController, QLPreviewingController, WKUIDeleg
   }
 
   override func loadView() {
+    log.debug("loadView")
     view = webView
 
     webView.uiDelegate = self
@@ -130,9 +131,9 @@ class PreviewViewController: NSViewController, QLPreviewingController, WKUIDeleg
         return webkit.messageHandlers.quicklook.postMessage({ action: "finishedLoading" });
       },
       async getPreviewedFile() {
-        await webkit.messageHandlers.quicklook.postMessage({ action: "getPreviewedFile" });
+        const path = await webkit.messageHandlers.quicklook.postMessage({ action: "getPreviewedFile" });
         const file = await window.quicklookPreviewedFile;
-        return {file: file, path: window.previewedFileURL};
+        return { file, path };
       },
     };
 
@@ -201,12 +202,12 @@ class PreviewViewController: NSViewController, QLPreviewingController, WKUIDeleg
 
     publisher
       .sink {
-        log.debug("message handler ended: \($0)")
+        log.debug("message handler ended: \($0) message: \(scriptMessage.body)")
         if case let .failure(error) = $0 {
           replyHandler(nil, error.localizedDescription)
         }
       } receiveValue: {
-        log.debug("message handler succeeded: \($0 ?? "(nil result)")")
+        log.debug("message handler succeeded: \($0 ?? "(nil result)") message: \(scriptMessage.body)")
         replyHandler($0, nil)
       }
       .store(in: &cancellables)
@@ -255,6 +256,10 @@ class PreviewViewController: NSViewController, QLPreviewingController, WKUIDeleg
         input.remove();
       }
       """, arguments: [:], in: nil, in: .page)
+        .map { [previewedFileURL] _ in
+          // The async function above does not return anything, but we want to return the file path
+          return previewedFileURL?.path
+        }
         .mapError { error in
           // Expose the actual underlying error message
           if let wkError = error as? WKError,
@@ -302,10 +307,6 @@ class PreviewViewController: NSViewController, QLPreviewingController, WKUIDeleg
     completionHandler: @escaping ([URL]?) -> Void
   ) {
     if let previewedFileURL = previewedFileURL {
-      // Set the previewedFileURL in Javascript to be returned along with file object
-      webView.evaluateJavaScript("""
-window.previewedFileURL="\(previewedFileURL)";
-""")
       log.debug("responding to open panel with previewed file url")
       completionHandler([previewedFileURL])
     } else {
