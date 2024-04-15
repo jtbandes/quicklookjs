@@ -1,6 +1,6 @@
 {
   "name": "quicklookjs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Quick Look plugin for web-based previews",
   "homepage": "https://github.com/jtbandes/quicklookjs#readme",
   "author": "Jacob Bandes-Storch",
@@ -14,9 +14,7 @@
   },
   "types": "index.d.ts",
   "scripts": {
-    "build": "xcodebuild -disableAutomaticPackageResolution -clonedSourcePackagesDirPath .swiftpm-packages -scheme PreviewExtension SYMROOT=$(pwd)/build -configuration Release clean build",
-    "postbuild": "rm -rf dist && mkdir -p dist && cp -R build/Release/PreviewExtension.appex dist/ && cp PreviewExtension/PreviewExtension.entitlements dist/",
-    "prepack": "npm run build"
+    "prepack": "make build"
   },
   "files": [
     "dist",

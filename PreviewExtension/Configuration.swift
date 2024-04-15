@@ -17,7 +17,8 @@ struct Configuration {
 
 extension Configuration {
   static func fromMainBundle() throws -> Configuration {
-    guard let dict = (Bundle.main.localizedInfoDictionary ?? Bundle.main.infoDictionary)?["QLJS"] as? [String: Any] else {
+    guard let dict = (Bundle.main.localizedInfoDictionary ?? Bundle.main.infoDictionary)?["QLJS"] as? [String: Any]
+    else {
       throw GenericError(message: "Could not read QLJS configuration from Info.plist")
     }
 
@@ -46,6 +47,7 @@ extension Configuration {
     return Configuration(
       loadingStrategy: loadingStrategy,
       pageURL: pageURL,
-      preferredContentSize: preferredContentSize)
+      preferredContentSize: preferredContentSize
+    )
   }
 }

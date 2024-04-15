@@ -14,7 +14,7 @@ struct GenericError: Error, LocalizedError {
   let message: String
 
   var errorDescription: String? {
-    return message
+    message
   }
 }
 
@@ -29,8 +29,13 @@ enum HandlerName {
 }
 
 extension WKWebView {
-  func callAsyncJavaScript(_ functionBody: String, arguments: [String : Any] = [:], in frame: WKFrameInfo? = nil, in contentWorld: WKContentWorld) -> Future<Any?, Error> {
-    return Future { promise in
+  func callAsyncJavaScript(
+    _ functionBody: String,
+    arguments: [String: Any] = [:],
+    in frame: WKFrameInfo? = nil,
+    in contentWorld: WKContentWorld
+  ) -> Future<Any?, Error> {
+    Future { promise in
       self.callAsyncJavaScript(functionBody, arguments: arguments, in: frame, in: contentWorld) {
         promise($0.map(Optional.some))
       }
@@ -39,7 +44,7 @@ extension WKWebView {
 }
 
 private func makeMouseEvent(_ type: NSEvent.EventType, at location: NSPoint, in window: NSWindow) -> NSEvent? {
-  return NSEvent.mouseEvent(
+  NSEvent.mouseEvent(
     with: type,
     location: location,
     modifierFlags: [],
@@ -48,11 +53,13 @@ private func makeMouseEvent(_ type: NSEvent.EventType, at location: NSPoint, in 
     context: nil,
     eventNumber: 0,
     clickCount: 1,
-    pressure: 0)
+    pressure: 0
+  )
 }
 
-class PreviewViewController: NSViewController, QLPreviewingController, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandlerWithReply {
-
+class PreviewViewController: NSViewController, QLPreviewingController, WKUIDelegate, WKNavigationDelegate,
+  WKScriptMessageHandlerWithReply
+{
   let webView: WKWebView
   let configuration: Configuration
 
@@ -61,7 +68,8 @@ class PreviewViewController: NSViewController, QLPreviewingController, WKUIDeleg
   var loadCompleteFuture: Future<Void, Error>
   var loadCompletePromise: Future<Void, Error>.Promise?
 
-  required init?(coder: NSCoder) { fatalError() }
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
   override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
     log.logLevel = .debug
     log.debug("init PreviewViewController")
@@ -75,7 +83,7 @@ class PreviewViewController: NSViewController, QLPreviewingController, WKUIDeleg
 
     do {
       configuration = try Configuration.fromMainBundle()
-    } catch let error {
+    } catch {
       log.error("Unable to load QuickLookJS configuration: \(error.localizedDescription)")
       fatalError("Unable to load QuickLookJS configuration: \(error.localizedDescription)")
     }
@@ -91,40 +99,49 @@ class PreviewViewController: NSViewController, QLPreviewingController, WKUIDeleg
   }
 
   override func loadView() {
-    self.view = webView
+    view = webView
 
     webView.uiDelegate = self
     webView.navigationDelegate = self
-    webView.configuration.userContentController.addScriptMessageHandler(self, contentWorld: .page, name: HandlerName.default)
-    webView.configuration.userContentController.addScriptMessageHandler(self, contentWorld: .page, name: HandlerName.internal)
+    webView.configuration.userContentController.addScriptMessageHandler(
+      self,
+      contentWorld: .page,
+      name: HandlerName.default
+    )
+    webView.configuration.userContentController.addScriptMessageHandler(
+      self,
+      contentWorld: .page,
+      name: HandlerName.internal
+    )
 
-    // WKWebView doesn't provide a way to send complex objects (such as File) between content worlds, so any supporting code must go directly in the page world.
+    // WKWebView doesn't provide a way to send complex objects (such as File) between content worlds, so any supporting
+    // code must go directly in the page world.
     webView.configuration.userContentController.addUserScript(WKUserScript(source: """
-let resolve, reject;
-window.quicklookPreviewedFile = new Promise((res, rej) => {
-  resolve = res;
-  reject = rej;
-});
-window.quicklookPreviewedFile.resolve = resolve;
-window.quicklookPreviewedFile.reject = reject;
+    let resolve, reject;
+    window.quicklookPreviewedFile = new Promise((res, rej) => {
+      resolve = res;
+      reject = rej;
+    });
+    window.quicklookPreviewedFile.resolve = resolve;
+    window.quicklookPreviewedFile.reject = reject;
 
-window.quicklook = {
-  async finishedLoading() {
-    return webkit.messageHandlers.quicklook.postMessage({ action: "finishedLoading" });
-  },
-  async getPreviewedFile() {
-    await webkit.messageHandlers.quicklook.postMessage({ action: "getPreviewedFile" });
-    return window.quicklookPreviewedFile;
-  },
-};
+    window.quicklook = {
+      async finishedLoading() {
+        return webkit.messageHandlers.quicklook.postMessage({ action: "finishedLoading" });
+      },
+      async getPreviewedFile() {
+        await webkit.messageHandlers.quicklook.postMessage({ action: "getPreviewedFile" });
+        return window.quicklookPreviewedFile;
+      },
+    };
 
-window.addEventListener("error", (event) => {
-  webkit.messageHandlers.quicklookInternal.postMessage({ action: "error", message: event.message });
-});
-window.addEventListener("unhandledrejection", (event) => {
-  webkit.messageHandlers.quicklookInternal.postMessage({ action: "error", message: event.reason.toString() });
-});
-""", injectionTime: .atDocumentStart, forMainFrameOnly: true))
+    window.addEventListener("error", (event) => {
+      webkit.messageHandlers.quicklookInternal.postMessage({ action: "error", message: event.message });
+    });
+    window.addEventListener("unhandledrejection", (event) => {
+      webkit.messageHandlers.quicklookInternal.postMessage({ action: "error", message: event.reason.toString() });
+    });
+    """, injectionTime: .atDocumentStart, forMainFrameOnly: true))
   }
 
   override func viewDidLoad() {
@@ -137,7 +154,7 @@ window.addEventListener("unhandledrejection", (event) => {
     previewedFileURL = url
     loadCompleteFuture.sink {
       log.debug("preparation ended: \($0)")
-      if case .failure(let error) = $0 {
+      if case let .failure(error) = $0 {
         completionHandler(error)
       }
     } receiveValue: {
@@ -147,7 +164,11 @@ window.addEventListener("unhandledrejection", (event) => {
     .store(in: &cancellables)
   }
 
-  func userContentController(_ userContentController: WKUserContentController, didReceive scriptMessage: WKScriptMessage, replyHandler: @escaping (Any?, String?) -> Void) {
+  func userContentController(
+    _: WKUserContentController,
+    didReceive scriptMessage: WKScriptMessage,
+    replyHandler: @escaping (Any?, String?) -> Void
+  ) {
     log.debug("got message for \(scriptMessage.name): \(scriptMessage.body)")
 
     let publisher: AnyPublisher<Any?, Error>
@@ -160,14 +181,16 @@ window.addEventListener("unhandledrejection", (event) => {
       publisher = Result {
         try JSONDecoder().decode(
           ScriptMessage.self,
-          from: JSONSerialization.data(withJSONObject: scriptMessage.body))
+          from: JSONSerialization.data(withJSONObject: scriptMessage.body)
+        )
       }.publisher.flatMap(handleMessage).eraseToAnyPublisher()
 
     case HandlerName.internal:
       publisher = Result {
         try JSONDecoder().decode(
           InternalScriptMessage.self,
-          from: JSONSerialization.data(withJSONObject: scriptMessage.body))
+          from: JSONSerialization.data(withJSONObject: scriptMessage.body)
+        )
       }.publisher.flatMap(handleInternalMessage).eraseToAnyPublisher()
 
     default:
@@ -178,7 +201,7 @@ window.addEventListener("unhandledrejection", (event) => {
     publisher
       .sink {
         log.debug("message handler ended: \($0)")
-        if case .failure(let error) = $0 {
+        if case let .failure(error) = $0 {
           replyHandler(nil, error.localizedDescription)
         }
       } receiveValue: {
@@ -196,46 +219,47 @@ window.addEventListener("unhandledrejection", (event) => {
 
     case .getPreviewedFile:
       return webView.callAsyncJavaScript("""
-const toHex = (num) => num.toString(16).padStart(2, "0");
-const id = Array.from(crypto.getRandomValues(new Uint8Array(16)), toHex).join("");
+      const toHex = (num) => num.toString(16).padStart(2, "0");
+      const id = Array.from(crypto.getRandomValues(new Uint8Array(16)), toHex).join("");
 
-const input = document.body.appendChild(document.createElement("input"));
-input.id = id;
-input.type = "file";
-input.style.display = "none";
+      const input = document.body.appendChild(document.createElement("input"));
+      input.id = id;
+      input.type = "file";
+      input.style.display = "none";
 
-const label = document.body.appendChild(document.createElement("label"));
-label.htmlFor = id;
-label.style.position = "fixed";
-label.style.display = "block";
-label.style.margin = "0";
-label.style.padding = "0";
-label.style.top = "0";
-label.style.right = "0";
-label.style.bottom = "0";
-label.style.left = "0";
+      const label = document.body.appendChild(document.createElement("label"));
+      label.htmlFor = id;
+      label.style.position = "fixed";
+      label.style.display = "block";
+      label.style.margin = "0";
+      label.style.padding = "0";
+      label.style.top = "0";
+      label.style.right = "0";
+      label.style.bottom = "0";
+      label.style.left = "0";
 
-input.onchange = (event) => {
-  if (event.target.files[0]) {
-    window.quicklookPreviewedFile.resolve(event.target.files[0]);
-  } else {
-    window.quicklookPreviewedFile.reject(new Error("no file was received"));
-  }
-};
+      input.onchange = (event) => {
+        if (event.target.files[0]) {
+          window.quicklookPreviewedFile.resolve(event.target.files[0]);
+        } else {
+          window.quicklookPreviewedFile.reject(new Error("no file was received"));
+        }
+      };
 
-try {
-  await webkit.messageHandlers.quicklookInternal.postMessage({action: "clickFileInput"});
-  await window.quicklookPreviewedFile;
-} finally {
-  label.remove();
-  input.remove();
-}
-""", arguments: [:], in: nil, in: .page)
+      try {
+        await webkit.messageHandlers.quicklookInternal.postMessage({action: "clickFileInput"});
+        await window.quicklookPreviewedFile;
+      } finally {
+        label.remove();
+        input.remove();
+      }
+      """, arguments: [:], in: nil, in: .page)
         .mapError { error in
           // Expose the actual underlying error message
           if let wkError = error as? WKError,
              wkError.code == WKError.javaScriptExceptionOccurred,
-             let message = wkError.userInfo["WKJavaScriptExceptionMessage"] as? String {
+             let message = wkError.userInfo["WKJavaScriptExceptionMessage"] as? String
+          {
             return GenericError(message: message)
           }
           return error
@@ -246,7 +270,7 @@ try {
 
   private func handleInternalMessage(_ message: InternalScriptMessage) -> AnyPublisher<Any?, Error> {
     switch message {
-    case .error(let message):
+    case let .error(message):
       log.error("preview page error: \(message)")
       return Just(nil).setFailureType(to: Error.self).eraseToAnyPublisher()
 
@@ -270,7 +294,12 @@ try {
     }
   }
 
-  func webView(_ webView: WKWebView, runOpenPanelWith parameters: WKOpenPanelParameters, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void) {
+  func webView(
+    _: WKWebView,
+    runOpenPanelWith _: WKOpenPanelParameters,
+    initiatedByFrame _: WKFrameInfo,
+    completionHandler: @escaping ([URL]?) -> Void
+  ) {
     if let previewedFileURL = previewedFileURL {
       log.debug("responding to open panel with previewed file url")
       completionHandler([previewedFileURL])
@@ -280,20 +309,21 @@ try {
     }
   }
 
-  func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+  func webView(_: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
     log.error("provisional navigation failed", metadata: [
       "error": "\(error.localizedDescription)",
-      "navigation": "\(ObjectIdentifier(navigation))"
+      "navigation": "\(ObjectIdentifier(navigation))",
     ])
     // Can't pass the full error object due to:
-    // -[NSXPCEncoder _checkObject:]: This coder only encodes objects that adopt NSSecureCoding (object is of class 'WKReloadFrameErrorRecoveryAttempter').
+    // -[NSXPCEncoder _checkObject:]: This coder only encodes objects that adopt NSSecureCoding (object is of class
+    // 'WKReloadFrameErrorRecoveryAttempter').
     // Passing a GenericError for some reason results in Quick Look showing a password prompt.
     loadCompletePromise?(.failure(CocoaError(.fileReadUnknown)))
   }
 
-  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+  func webView(_: WKWebView, didFinish navigation: WKNavigation!) {
     log.debug("navigation finished", metadata: [
-      "navigation": "\(ObjectIdentifier(navigation))"
+      "navigation": "\(ObjectIdentifier(navigation))",
     ])
 
     switch configuration.loadingStrategy {
@@ -302,7 +332,6 @@ try {
       loadCompletePromise?(.success(()))
     case .waitForSignal:
       log.debug("waiting for completion signal")
-      break
     }
   }
 }

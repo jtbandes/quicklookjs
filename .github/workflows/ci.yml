@@ -3,12 +3,27 @@ name: CI
 on:
   push:
     branches: [main]
+    tags: ["v*"]
   pull_request:
     branches: [main]
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - run: make lint-ci
+      - run: make format-ci
+
   build:
     runs-on: macos-14
+    permissions:
+      # https://docs.npmjs.com/generating-provenance-statements#publishing-packages-with-provenance-via-github-actions
+      id-token: write
     steps:
       - uses: actions/checkout@v4.1.1
         with:
@@ -26,6 +41,9 @@ jobs:
           key: v0-${{ runner.os }}-swiftpm-${{ hashFiles('**/Package.resolved') }}
           restore-keys: v0-${{ runner.os }}-swiftpm-
 
-      - run: npm run build
+      - run: npm publish --provenance --access public --dry-run
 
-      - run: file build/Release/PreviewExtension.appex/Contents/MacOS/*
+      - run: npm publish --provenance --access public
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
