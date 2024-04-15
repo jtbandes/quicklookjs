@@ -59,7 +59,7 @@ private func makeMouseEvent(_ type: NSEvent.EventType, at location: NSPoint, in 
 
 class TransparentWebView: WKWebView {
   func enableTransparentBackground() {
-    self.setValue(false, forKey: "drawsBackground")
+    setValue(false, forKey: "drawsBackground")
   }
 
   // Try to avoid crashing if this drawsBackground hack stops working in a future macOS version
