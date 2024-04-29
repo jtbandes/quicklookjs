@@ -113,11 +113,11 @@ class PreviewViewController: NSViewController, QLPreviewingController, WKUIDeleg
   }
 
   deinit {
-    log.debug("deinit PreviewViewController")
+    log.debug("deinit \(self)")
   }
 
   override func loadView() {
-    log.debug("loadView")
+    log.debug("\(self) loadView")
     view = webView
 
     webView.uiDelegate = self
@@ -166,6 +166,13 @@ class PreviewViewController: NSViewController, QLPreviewingController, WKUIDeleg
 
   override func viewDidLoad() {
     webView.loadFileURL(configuration.pageURL, allowingReadAccessTo: configuration.pageURL)
+  }
+
+  override func viewDidDisappear() {
+    super.viewDidDisappear()
+    // Break a strong reference that prevents the view controller from being released
+    // https://forums.developer.apple.com/forums/thread/713062?answerId=726937022#726937022
+    webView.configuration.userContentController.removeAllScriptMessageHandlers()
   }
 
   func preparePreviewOfFile(at url: URL, completionHandler: @escaping (Error?) -> Void) {
