@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 0
           lfs: true
 
-      - uses: actions/setup-node@v4.3.0
+      - uses: actions/setup-node@v4.4.0
         with:
           node-version: 20.x
           registry-url: https://registry.npmjs.org
