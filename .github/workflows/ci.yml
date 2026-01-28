@@ -42,7 +42,7 @@ jobs:
           key: v0-${{ runner.os }}-swiftpm-${{ hashFiles('**/Package.resolved') }}
           restore-keys: v0-${{ runner.os }}-swiftpm-
 
-      - run: npm publish --provenance --access public --dry-run
+      - run: npm pack
 
       - run: npm publish --provenance --access public
         if: ${{ startsWith(github.ref, 'refs/tags/v') }}
