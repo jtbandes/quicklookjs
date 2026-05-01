@@ -35,7 +35,7 @@ jobs:
           node-version: 24.x
           registry-url: https://registry.npmjs.org
 
-      - uses: actions/cache@v5.0.1
+      - uses: actions/cache@v5.0.5
         with:
           path: |
             .swiftpm-packages
